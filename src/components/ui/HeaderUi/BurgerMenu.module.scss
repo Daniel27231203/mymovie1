@@ -1,0 +1,26 @@
+.menu {
+  position: absolute;
+  top: 50px;
+  right: 20px;
+  padding: 20px;
+  background: darkmagenta;
+  border-radius: 15px 0 15px 15px;
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    li {
+      list-style: none;
+      .link {
+        padding: 5px 10px;
+        background: white;
+        border-radius: 8px;
+        color: black;
+        &:hover {
+          background: black;
+          color: white;
+        }
+      }
+    }
+  }
+}
