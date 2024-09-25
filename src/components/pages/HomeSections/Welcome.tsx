@@ -42,6 +42,7 @@ const Welcome = () => {
           <div className={scss.content}>
             {backRandomImage ? (
               <>
+                {/* fix */}
                 <h1></h1>
                 <p>Открой для себя лучшие фильмы и шоу — всё в одном месте!</p>
                 <div className={scss.searchBlock}>
