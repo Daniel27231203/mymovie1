@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+// import "keen-slider/keen-slider.min.css";
 import "./globals.scss";
 import LayoutClient from "./layout.client";
 import { getServerSession } from "next-auth";

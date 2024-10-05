@@ -1,208 +1,105 @@
-.Welcome {
-  .content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    height: 700px;
-    gap: 50px;
-    transition: 0.5s;
-    h1 {
-      position: relative;
-      color: rgb(255, 255, 255);
-      font-size: 60px;
-      font-weight: 700;
-      line-height: 90px;
-      letter-spacing: 0%;
-      text-align: center;
-
-      &::before {
-        content: "Добро пожаловать на сайт, где кино оживает!";
-        animation: words 20s infinite;
-      }
-      &::after {
-        content: "";
-        position: absolute;
-        animation: cursor 0.6s infinite;
-      }
-    }
-    p {
-      color: rgb(255, 255, 255);
-      font-size: 24px;
-      font-weight: 500;
-      line-height: 24px;
-      letter-spacing: 0%;
-      text-align: center;
-      width: 100%;
-    }
-    .searchBlock {
-      z-index: 1;
-      width: 950px;
-      height: 60px;
+.all {
+  position: relative;
+  .Welcome {
+    .content {
       display: flex;
       align-items: center;
-      input {
-        width: 70%;
-        height: 100%;
-        border-radius: 30px 0px 0px 30px;
-
-        background: rgb(255, 255, 255);
-        color: black;
-        font-size: 25px;
-        padding: 10px;
-      }
-      button {
-        border-radius: 0px 30px 30px 0px;
-
-        background: linear-gradient(
-          110.07deg,
-          rgb(181, 9, 189) 0.99%,
-          rgb(218, 47, 104) 100%
-        );
+      justify-content: center;
+      flex-direction: column;
+      height: 700px;
+      gap: 50px;
+      transition: 0.5s;
+      h1 {
+        position: relative;
         color: rgb(255, 255, 255);
-        font-family: Inter;
-        font-size: 17.3px;
-        font-weight: 400;
-        line-height: 21px;
+        font-size: 60px;
+        font-weight: 700;
+        line-height: 90px;
         letter-spacing: 0%;
-        height: 100%;
-        width: 30%;
-        cursor: pointer;
-      }
-    }
-  }
-}
-.Bg {
-  position: fixed;
-  width: 100%;
-  height: 700px;
-  opacity: 0.5;
-  transition: 0.5s;
-  .bg {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 250px;
-    background: linear-gradient(
-      180deg,
-      rgba(4, 21, 45, 0),
-      rgb(4, 21, 45) 79.17%
-    );
-  }
-  .bgImage {
-    width: 100%;
-    height: 100%;
-    transition: 0.5s;
-  }
-}
+        text-align: center;
 
-@keyframes cursor {
-  to {
-    border-left: 3px solid black;
-  }
-}
-
-@keyframes words {
-  0%,
-  20% {
-    content: "Мы предлагаем свежие рецензии и новости о фильмах.";
-  }
-  21%,
-  40% {
-    content: "Узнай о лучших фильмах всех жанров и эпох.";
-  }
-  41%,
-  60% {
-    content: "Ищешь что посмотреть? Наши рейтинги помогут.";
-  }
-  61%,
-  80% {
-    content: "Следи за новинками кино и грядущими премьерами.";
-  }
-  81%,
-  100% {
-    content: "Делись мнениями о фильмах с другими киноманами.";
-  }
-}
-
-@media (max-width: 1100px) {
-  .Welcome {
-    .content {
-      h1 {
-        font-size: 30px;
-        line-height: 30px;
+        &::before {
+          content: "Добро пожаловать на сайт, где кино оживает!";
+          animation: words 20s infinite;
+        }
+        &::after {
+          content: "";
+          position: absolute;
+          animation: cursor 0.6s infinite;
+        }
       }
       p {
-        font-size: 15px;
-        line-height: 15px;
+        color: rgb(255, 255, 255);
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 24px;
+        letter-spacing: 0%;
+        text-align: center;
+        width: 100%;
       }
       .searchBlock {
-        width: 700px;
-        height: 40px;
-      }
-    }
-  }
-}
-@media (max-width: 750px) {
-  .Welcome {
-    .content {
-      h1 {
-        width: 500px;
-      }
-      p {
-        width: 400px;
-      }
-      .searchBlock {
-        width: 400px;
-        height: 40px;
+        z-index: 1;
+        width: 950px;
+        height: 60px;
+        display: flex;
+        align-items: center;
         input {
-          font-size: 15px;
-        }
-      }
-    }
-  }
-}
-@media (max-width: 500px) {
-  .Welcome {
-    .content {
-      h1 {
-        font-size: 20px;
-        line-height: 20px;
-        width: 300px;
-      }
-      p {
-        font-size: 10px;
-        line-height: 10px;
-        width: 300px;
-      }
-      .searchBlock {
-        width: 300px;
-        height: 30px;
-        button {
-          font-size: 15px;
-        }
-      }
-    }
-  }
-}
-@media (max-width: 350px) {
-  .Welcome {
-    .content {
-      h1 {
-        width: 250px;
-      }
-      .searchBlock {
-        width: 250px;
-      }
-      p {
-        width: 250px;
-      }
-    }
-  }
-}
+          width: 70%;
+          height: 100%;
+          border-radius: 30px 0px 0px 30px;
 
-/* HTML: <div class="loader"></div> */
+          background: rgb(255, 255, 255);
+          color: black;
+          font-size: 25px;
+          padding: 10px;
+        }
+        button {
+          border-radius: 0px 30px 30px 0px;
+
+          background: linear-gradient(
+            110.07deg,
+            rgb(181, 9, 189) 0.99%,
+            rgb(218, 47, 104) 100%
+          );
+          color: rgb(255, 255, 255);
+          font-family: Inter;
+          font-size: 17.3px;
+          font-weight: 400;
+          line-height: 21px;
+          letter-spacing: 0%;
+          height: 100%;
+          width: 30%;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  .Bg {
+    position: absolute;
+    width: 100%;
+    height: 700px;
+    opacity: 0.5;
+    transition: 0.5s;
+    z-index: -1;
+    .bg {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 250px;
+      background: linear-gradient(
+        180deg,
+        rgba(4, 21, 45, 0),
+        rgb(4, 21, 45) 79.17%
+      );
+    }
+    .bgImage {
+      width: 100%;
+      height: 100%;
+      transition: 0.5s;
+    }
+  }
+}
 .Load {
   position: fixed;
   width: 100%;
@@ -255,3 +152,118 @@
     clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%);
   }
 }
+
+@keyframes cursor {
+  to {
+    border-left: 3px solid black;
+  }
+}
+
+@keyframes words {
+  0%,
+  20% {
+    content: "Мы предлагаем свежие рецензии и новости о фильмах.";
+  }
+  21%,
+  40% {
+    content: "Узнай о лучших фильмах всех жанров и эпох.";
+  }
+  41%,
+  60% {
+    content: "Ищешь что посмотреть? Наши рейтинги помогут.";
+  }
+  61%,
+  80% {
+    content: "Следи за новинками кино и грядущими премьерами.";
+  }
+  81%,
+  100% {
+    content: "Делись мнениями о фильмах с другими киноманами.";
+  }
+}
+
+@media (max-width: 1100px) {
+  .all {
+    .Welcome {
+      .content {
+        h1 {
+          font-size: 30px;
+          line-height: 30px;
+        }
+        p {
+          font-size: 15px;
+          line-height: 15px;
+        }
+        .searchBlock {
+          width: 700px;
+          height: 40px;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 750px) {
+  .all {
+    .Welcome {
+      .content {
+        h1 {
+          width: 500px;
+        }
+        p {
+          width: 400px;
+        }
+        .searchBlock {
+          width: 400px;
+          height: 40px;
+          input {
+            font-size: 15px;
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 500px) {
+  .all {
+    .Welcome {
+      .content {
+        h1 {
+          font-size: 20px;
+          line-height: 20px;
+          width: 300px;
+        }
+        p {
+          font-size: 10px;
+          line-height: 10px;
+          width: 300px;
+        }
+        .searchBlock {
+          width: 300px;
+          height: 30px;
+          button {
+            font-size: 15px;
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 350px) {
+  .all {
+    .Welcome {
+      .content {
+        h1 {
+          width: 250px;
+        }
+        .searchBlock {
+          width: 250px;
+        }
+        p {
+          width: 250px;
+        }
+      }
+    }
+  }
+}
+
+/* HTML: <div class="loader"></div> */

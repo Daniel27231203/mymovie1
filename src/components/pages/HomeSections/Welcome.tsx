@@ -20,7 +20,7 @@ const Welcome = () => {
     backgroundRandomImage();
   }, [data]);
   return (
-    <>
+    <div className={scss.all}>
       {backRandomImage ? (
         <div className={scss.Bg}>
           <img
@@ -54,7 +54,7 @@ const Welcome = () => {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 };
 

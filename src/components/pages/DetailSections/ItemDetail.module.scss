@@ -1,0 +1,505 @@
+.ItemDetail {
+  position: relative;
+  .detailBg {
+    position: absolute;
+    width: 100%;
+    height: 90vh;
+    z-index: -1;
+    img {
+      width: 100%;
+      height: 90vh;
+    }
+    .detbg {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        180deg,
+        rgba(4, 21, 45, 0),
+        rgba(4, 24, 52, 0.668) 10.17%,
+        rgb(4, 21, 45) 79.17%
+      );
+    }
+  }
+  .content {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .block {
+      padding: 40px 0;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      img {
+        width: 450px;
+        height: auto;
+        border-radius: 15px;
+      }
+      .detailTitle {
+        display: flex;
+        align-items: start;
+        flex-direction: column;
+        gap: 15px;
+        width: 70%;
+
+        .modal {
+          h1 {
+            font-size: 45px;
+            font-weight: bold;
+          }
+          .modalImg {
+            display: none;
+          }
+        }
+        .tangle {
+          font-size: 25px;
+          color: rgb(183, 175, 175);
+          font-style: italic;
+          margin: 5px 0 7px 0;
+        }
+        .genres {
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          span {
+            padding: 5px 10px;
+            background: rgb(210, 44, 89);
+            border-radius: 15px;
+            cursor: pointer;
+          }
+        }
+        .play {
+          margin: 10px 0;
+          display: flex;
+          align-items: center;
+          gap: 50px;
+          .circle {
+            width: 80px;
+          }
+          .PlayBtn {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            cursor: pointer;
+            svg {
+              width: 60px;
+            }
+            span {
+              //   color: red;
+            }
+          }
+        }
+        .overview {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          margin: 0 0 40px 0;
+          h4 {
+            font-size: 30px;
+          }
+          p {
+            font-size: 20px;
+            color: rgb(238, 229, 229);
+            font-style: italic;
+            letter-spacing: 1px;
+          }
+        }
+        .detBlock {
+          width: 100%;
+          .blocks {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+          }
+          .detBox {
+            display: flex;
+            align-items: end;
+            gap: 10px;
+            h5 {
+              font-size: 18px;
+              font-weight: 700;
+            }
+            span {
+              font-size: 18px;
+              font-weight: 300;
+              color: rgb(100, 100, 100);
+            }
+          }
+          .hr {
+            margin: 10px 0;
+            background: rgb(100, 100, 100);
+            height: 1px;
+          }
+        }
+      }
+    }
+    .treilerModal {
+      position: fixed;
+      top: 30%;
+      left: 30%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+      button {
+        padding: 2px;
+        font-size: 25px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+@media (max-width: 1700px) {
+  .ItemDetail {
+    .content {
+      .block {
+        img {
+          width: 350px;
+        }
+        .detailTitle {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          width: 60%;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 1100px) {
+  .ItemDetail {
+    .content {
+      .block {
+        img {
+          width: 300px;
+        }
+        .detailTitle {
+          width: 50%;
+
+          .modal {
+            h1 {
+              font-size: 35px;
+            }
+          }
+          .tangle {
+            font-size: 20px;
+          }
+          .genres {
+            span {
+              padding: 2px 5px;
+            }
+          }
+          .play {
+            .circle {
+              width: 50px;
+            }
+          }
+          .overview {
+            margin: 0 0 30px 0;
+            h4 {
+              font-size: 20px;
+            }
+            p {
+              font-size: 17px;
+            }
+          }
+          .detBlock {
+            .blocks {
+              display: flex;
+              gap: 8px;
+            }
+            .detBox {
+              display: flex;
+              align-items: end;
+              gap: 10px;
+              h5 {
+                font-size: 13px;
+              }
+              span {
+                font-size: 12px;
+              }
+            }
+          }
+        }
+      }
+      .treilerModal {
+        left: 20%;
+      }
+    }
+  }
+}
+@media (max-width: 850px) {
+  .ItemDetail {
+    .content {
+      .block {
+        img {
+          width: 250px;
+        }
+        .detailTitle {
+          display: flex;
+          flex-direction: column;
+          gap: 0;
+          width: 40%;
+
+          .modal {
+            h1 {
+              font-size: 30px;
+            }
+          }
+          .tangle {
+            font-size: 15px;
+          }
+
+          .play {
+            display: flex;
+            gap: 20px;
+            .circle {
+              width: 40px;
+            }
+          }
+          .overview {
+            margin: 0 0 20px 0;
+            h4 {
+              font-size: 15px;
+            }
+            p {
+              font-size: 13px;
+            }
+          }
+          .detBlock {
+            .blocks {
+              display: flex;
+              flex-direction: column;
+              align-items: start;
+            }
+          }
+        }
+      }
+      .treilerModal {
+        left: 15%;
+        top: 20%;
+      }
+    }
+  }
+}
+@media (max-width: 560px) {
+  .ItemDetail {
+    .detailBg {
+      width: 100%;
+      height: 80vh;
+      img {
+        width: 100%;
+        height: 80vh;
+      }
+    }
+    .content {
+      display: flex;
+      align-items: start;
+      padding: 70px 0;
+      .block {
+        img {
+          width: 200px;
+        }
+        .detailTitle {
+          width: 30%;
+
+          .modal {
+            h1 {
+              font-size: 20px;
+            }
+          }
+          .tangle {
+            font-size: 10px;
+          }
+          .genres {
+            display: flex;
+            gap: 5px;
+            span {
+              font-size: 10px;
+            }
+          }
+
+          .play {
+            display: flex;
+            gap: 0px;
+            .circle {
+              width: 30px;
+            }
+          }
+          .overview {
+            margin: 0 0 10px 0;
+            h4 {
+              font-size: 10px;
+            }
+            p {
+              font-size: 9px;
+            }
+          }
+          .detBlock {
+            .blocks {
+            }
+            .detBox {
+              display: flex;
+              align-items: end;
+              gap: 5px;
+              h5 {
+                font-size: 8px;
+              }
+              span {
+                font-size: 7px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .ItemDetail {
+    .content {
+      .block {
+        padding: 0;
+        img {
+          display: none;
+        }
+        .detailTitle {
+          width: 100%;
+
+          .modal {
+            position: relative;
+            width: 100%;
+            .modalImg {
+              display: block;
+              width: 70px;
+              height: auto;
+              border-radius: 15px;
+              position: absolute;
+              left: 70%;
+              top: 0;
+            }
+            h1 {
+              font-size: 25px;
+            }
+          }
+          .tangle {
+            font-size: 20px;
+            margin: 10px 0;
+          }
+          .genres {
+            display: flex;
+            gap: 5px;
+            span {
+              font-size: 15px;
+            }
+          }
+
+          .play {
+            display: flex;
+            gap: 10px;
+            .circle {
+              width: 50px;
+            }
+          }
+          .overview {
+            margin: 0 0 10px 0;
+            h4 {
+              font-size: 20px;
+            }
+            p {
+              font-size: 15px;
+            }
+            margin: 10px 0;
+          }
+          .detBlock {
+            margin: 10px 0;
+            .blocks {
+            }
+            .detBox {
+              h5 {
+                font-size: 17px;
+              }
+              span {
+                font-size: 16px;
+              }
+            }
+          }
+        }
+      }
+      .treilerModal {
+        left: 10%;
+      }
+    }
+  }
+}
+@media (max-width: 380px) {
+  .ItemDetail {
+    .content {
+      .block {
+        .detailTitle {
+          .modal {
+            .modalImg {
+              position: absolute;
+              left: 80%;
+            }
+            h1 {
+              font-size: 20px;
+            }
+          }
+          .tangle {
+            font-size: 15px;
+            margin: 7px 0;
+          }
+          .genres {
+            span {
+              font-size: 10px;
+            }
+          }
+
+          .play {
+            display: flex;
+            gap: 10px;
+            .circle {
+              width: 40px;
+            }
+          }
+          .overview {
+            margin: 0 0 10px 0;
+            h4 {
+              font-size: 15px;
+            }
+            p {
+              font-size: 12px;
+            }
+            margin: 5px 0;
+          }
+          .detBlock {
+            margin: 5px 0;
+            .blocks {
+            }
+            .detBox {
+              h5 {
+                font-size: 12px;
+              }
+              span {
+                font-size: 11px;
+              }
+            }
+          }
+        }
+      }
+      .treilerModal {
+        left: 7%;
+      }
+    }
+  }
+}

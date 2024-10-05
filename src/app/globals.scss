@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -13,6 +15,14 @@
 
 html {
   color-scheme: dark;
+}
+
+body {
+  background: linear-gradient(
+    180deg,
+    rgba(4, 21, 45, 0),
+    rgb(4, 21, 45) 79.17%
+  );
 }
 
 a {

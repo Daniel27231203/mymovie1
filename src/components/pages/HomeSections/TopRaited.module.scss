@@ -1,0 +1,56 @@
+.TopRated {
+  padding: 40px 0;
+  .content {
+    .topRatedHeader {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      h1 {
+        font-size: 35px;
+        font-weight: bold;
+        font-family: "Montserrat", "Helvetica";
+      }
+      .topRatedBtnBlock {
+        button {
+          padding: 10px 30px;
+          background: black;
+          color: white;
+          border: none;
+          cursor: pointer;
+          transition: 0.5s;
+          box-shadow: 0px 0px 14px 4px rgba(75, 73, 128, 0.75);
+          -webkit-box-shadow: 0px 0px 14px 4px rgba(75, 73, 128, 0.75);
+          -moz-box-shadow: 0px 0px 14px 4px rgba(75, 73, 128, 0.75);
+        }
+        .movie {
+          border-radius: 15px 0 0 15px;
+        }
+        .TVShow {
+          border-radius: 0 15px 15px 0;
+        }
+        .active {
+          background: white;
+          color: black;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 550px) {
+  .TopRated {
+    .content {
+      .topRatedHeader {
+        h1 {
+          font-size: 20px;
+        }
+        .topRatedBtnBlock {
+          button {
+            padding: 5px 20px;
+          }
+        }
+      }
+    }
+  }
+}

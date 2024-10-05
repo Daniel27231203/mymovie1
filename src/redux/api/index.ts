@@ -28,6 +28,6 @@ export const api = createApi({
   baseQuery: baseQueryExtended,
   refetchOnFocus: true,
   refetchOnReconnect: true,
-  tagTypes: ["upcoming"],
+  tagTypes: ["upcoming", "trending", "popular", "top_rated"],
   endpoints: () => ({}),
 });
