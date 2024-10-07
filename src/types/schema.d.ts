@@ -314,3 +314,155 @@ interface IMTreiler {
     published_at: string;
   }>;
 }
+interface ITVTreiler {
+  id: number;
+  results: Array<{
+    iso_639_1: string;
+    iso_3166_1: string;
+    name: string;
+    key: string;
+    site: string;
+    size: number;
+    type: string;
+    official: boolean;
+    published_at: string;
+    id: string;
+  }>;
+}
+interface IMSimilar {
+  page: number;
+  results: Array<{
+    adult: boolean;
+    backdrop_path?: string;
+    genre_ids: Array<number>;
+    id: number;
+    original_language: string;
+    original_title: string;
+    overview: string;
+    popularity: number;
+    poster_path: string;
+    release_date: string;
+    title: string;
+    video: boolean;
+    vote_average: number;
+    vote_count: number;
+  }>;
+  total_pages: number;
+  total_results: number;
+}
+
+interface ITVSimilar {
+  page: number;
+  results: Array<{
+    adult: boolean;
+    backdrop_path?: string;
+    genre_ids: Array<number>;
+    id: number;
+    origin_country: Array<string>;
+    original_language: string;
+    original_name: string;
+    overview: string;
+    popularity: number;
+    poster_path?: string;
+    first_air_date: string;
+    name: string;
+    vote_average: number;
+    vote_count: number;
+  }>;
+  total_pages: number;
+  total_results: number;
+}
+interface ITVRec {
+  page: number;
+  results: Array<{
+    backdrop_path: string;
+    id: number;
+    name: string;
+    original_name: string;
+    overview: string;
+    poster_path: string;
+    media_type: string;
+    adult: boolean;
+    original_language: string;
+    genre_ids: Array<number>;
+    popularity: number;
+    first_air_date: string;
+    vote_average: number;
+    vote_count: number;
+    origin_country: Array<string>;
+  }>;
+  total_pages: number;
+  total_results: number;
+}
+interface IMRec {
+  page: number;
+  results: Array<{
+    backdrop_path: string;
+    id: number;
+    title: string;
+    original_title: string;
+    overview: string;
+    poster_path: string;
+    media_type: string;
+    adult: boolean;
+    original_language: string;
+    genre_ids: Array<number>;
+    popularity: number;
+    release_date: string;
+    video: boolean;
+    vote_average: number;
+    vote_count: number;
+  }>;
+  total_pages: number;
+  total_results: number;
+}
+
+interface IMoviePage {
+  page: number;
+  results: Array<{
+    adult: boolean;
+    backdrop_path: string;
+    genre_ids: Array<number>;
+    id: number;
+    original_language: string;
+    original_title: string;
+    overview: string;
+    popularity: number;
+    poster_path: string;
+    release_date: string;
+    title: string;
+    video: boolean;
+    vote_average: number;
+    vote_count: number;
+  }>;
+  total_pages: number;
+  total_results: number;
+}
+interface ITVPage {
+  page: number;
+  results: Array<{
+    adult: boolean;
+    backdrop_path: string;
+    genre_ids: Array<number>;
+    id: number;
+    origin_country: Array<string>;
+    original_language: string;
+    original_name: string;
+    overview: string;
+    popularity: number;
+    poster_path: string;
+    first_air_date: string;
+    name: string;
+    vote_average: number;
+    vote_count: number;
+  }>;
+  total_pages: number;
+  total_results: number;
+}
+
+interface IGenres {
+  genres: Array<{
+    id: number;
+    name: string;
+  }>;
+}

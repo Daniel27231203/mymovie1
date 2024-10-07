@@ -18,8 +18,8 @@ const Casts = () => {
         <div className={scss.content}>
           <h1>Top Cast</h1>
           <div className={scss.blocks}>
-            {creditsMap?.cast.map((el) => (
-              <div className={scss.block}>
+            {creditsMap?.cast.map((el, index) => (
+              <div key={index} className={scss.block}>
                 <img
                   src={`https://image.tmdb.org/t/p/w500${el.profile_path}`}
                   alt=""

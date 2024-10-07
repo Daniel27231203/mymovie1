@@ -46,7 +46,7 @@ const Header = () => {
                             ? `${scss.link} ${scss.active}`
                             : scss.link
                         }
-                        href={link.href}
+                        href={`${link.href}/${link.type}`}
                       >
                         {link.name}
                       </Link>

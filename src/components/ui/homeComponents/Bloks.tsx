@@ -3,13 +3,15 @@ import scss from "./Bloks.module.scss";
 import "react-circular-progressbar/dist/styles.css";
 import CircularRating from "./Circle";
 import { useRouter } from "next/navigation";
+import GenresComponents from "../Genres/GenresComponents";
 interface IData {
   data: ITrending | IPopular | ITopRated;
   value?: string;
+  load?: boolean;
+  type?: string;
 }
 
-const Bloks: FC<IData> = ({ data, value }) => {
-  console.log("🚀 ~ data:", data);
+const Bloks: FC<IData> = ({ data, value, type }) => {
   const router = useRouter();
   const formatDate = (dateString: string): string => {
     const date = new Date(dateString);
@@ -22,20 +24,21 @@ const Bloks: FC<IData> = ({ data, value }) => {
   };
 
   return (
-    <div className={scss.blocks}>
+    <div className={type === "list" ? scss.list : scss.blocks}>
       {data?.results.map((item, index) => (
         <>
           <div
             onClick={() => {
               router.push(`/${value || "movie"}/${item.id}`);
             }}
-            key={item.id || index}
+            key={index}
             className={scss.block}
           >
             <div className={scss.ganre}>
-              {item.genre_ids.map((genreId) => (
-                <span key={genreId}>{}</span>
-              ))}
+              <GenresComponents
+                genreId={item.genre_ids}
+                type={value === "tv" ? "tv" : "movie"}
+              />
             </div>
             <div className={scss.box}>
               <div className={scss.circleRai}>

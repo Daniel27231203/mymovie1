@@ -35,6 +35,17 @@
         }
       }
     }
+    .bigBox {
+      .skeletonContainer {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        overflow-x: scroll;
+        &::-webkit-scrollbar {
+          display: none;
+        }
+      }
+    }
   }
 }
 

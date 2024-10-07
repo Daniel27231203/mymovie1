@@ -2,11 +2,12 @@
 import { useGetTrandingQuery } from "@/redux/api/tranding";
 import scss from "./Tranding.module.scss";
 import { useState } from "react";
-import Bloks from "./homeComponents/Bloks";
+import Bloks from "../../ui/homeComponents/Bloks";
+import Skeleton from "@/components/ui/Sceleton/Sceleton";
 
 const Tranding = () => {
   const [trending, setTranding] = useState("day");
-  const { data, isLoading } = useGetTrandingQuery(trending);
+  const { data, isLoading } = useGetTrandingQuery(trending); // Получаем состояние загрузки
 
   return (
     <section className={scss.Tranding}>
@@ -36,7 +37,19 @@ const Tranding = () => {
             </div>
           </div>
           <div className={scss.bigBox}>
-            {isLoading ? <h1>load</h1> : <Bloks data={data!} />}
+            {/* Если данные загружаются, показываем скелетон */}
+            {isLoading ? (
+              <div className={scss.skeletonContainer}>
+                {Array(10)
+                  .fill(0)
+                  .map((_, index) => (
+                    <Skeleton key={index} />
+                  ))}
+              </div>
+            ) : (
+              // После загрузки отображаем реальный контент
+              <Bloks data={data!} />
+            )}
           </div>
         </div>
       </div>

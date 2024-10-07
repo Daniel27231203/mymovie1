@@ -7,30 +7,40 @@ import {
   useGetMCreditsQuery,
   useGetMovieVideoQuery,
   useGetTVCreditsQuery,
+  useGetTVVideoQuery,
 } from "@/redux/api/detail";
-import CircularRating from "../HomeSections/homeComponents/Circle";
+import CircularRating from "../../ui/homeComponents/Circle";
 import WatchTrailerButton from "./PlayBtn";
 import { useState } from "react";
 import Treiler from "@/components/ui/DetailUI/Treiler";
+import Loader from "@/components/ui/loader/Loader";
 
 const ItemDetail = () => {
-  //  states
-
+  // State для открытия трейлера
   const [treilerModal, setTreilerModal] = useState(false);
 
-  //
-  const { movieQuary, tvQuary } = useParams(); // Убедись, что названия совпадают с параметрами маршрутизации
+  // Извлечение параметров маршрута
+  const { movieQuary, tvQuary } = useParams();
+
+  // Получение данных о фильме или сериале
   const { data: movie, isLoading: movieLoad } = useGetDetailMovieQuery(
     +movieQuary
   );
   const { data: tv, isLoading: tvLoad } = useGetDetailTvQuery(+tvQuary);
-  const { data: Mtreiler } = useGetMovieVideoQuery(+movieQuary);
-  const keyForVideo = Mtreiler?.results.find((el) => el);
+  const load = movieLoad || tvLoad;
 
+  // Получение трейлеров
+  const { data: Mtreiler } = useGetMovieVideoQuery(+movieQuary);
+  const { data: Ttreiler } = useGetTVVideoQuery(+tvQuary);
+  const keyForVideo = Mtreiler?.results?.[0]?.key;
+  const keyForTVVideo = Ttreiler?.results?.[0]?.key;
+
+  // Получение информации о создателях
   const { data: MovieCredits } = useGetMCreditsQuery(+movieQuary);
   const { data: TVCredits } = useGetTVCreditsQuery(+tvQuary);
+  const creditsMap = MovieCredits || TVCredits;
 
-  const creditsMap = MovieCredits ? MovieCredits : TVCredits;
+  // Фильтрация режиссёров и сценаристов
   const director =
     creditsMap?.crew?.filter((el) => el.known_for_department === "Directing") ||
     [];
@@ -38,51 +48,51 @@ const ItemDetail = () => {
     creditsMap?.crew?.filter((el) => el.known_for_department === "Writing") ||
     [];
 
+  // Форматирование даты
   const formatDate = (dateString: string): string => {
     const date = new Date(dateString);
-    const options: Intl.DateTimeFormatOptions = {
+    return date.toLocaleDateString("en-EN", {
       year: "numeric",
       month: "long",
       day: "numeric",
-    };
-    return date.toLocaleDateString("en-EN", options);
+    });
   };
 
+  // Получение рейтинга и времени выполнения
   const movieAvarage = movie?.vote_average;
   const tvAvarage = tv?.vote_average;
 
-  // get time for hour and minute
+  const formatRuntime = (time: number | undefined): string => {
+    if (!time) return "0h 00min";
+    const hours = Math.floor(time / 60);
+    const minutes = time % 60;
+    return `${hours}h ${minutes < 10 ? "0" : ""}${minutes}min`;
+  };
 
-  const movieTime = movie ? movie.runtime / 60 : null;
-  const hourMTime = movieTime ? String(Math.floor(movieTime)) : "0";
-  const minuteMTime = movieTime
-    ? String(Math.round((movieTime - Math.floor(movieTime)) * 60))
-    : "00";
-
-  const tvTime = tv ? tv.episode_run_time?.[0] / 60 : null;
-  const hourTVTime = tvTime ? String(Math.floor(tvTime)) : "0";
-  const minuteTVTime = tvTime
-    ? String(Math.round((tvTime - Math.floor(tvTime)) * 60))
-    : "00";
+  const runtime = movie
+    ? formatRuntime(movie.runtime)
+    : formatRuntime(tv?.episode_run_time?.[0]);
 
   return (
     <section className={scss.ItemDetail}>
-      <div className={scss.detailBg}>
-        <img
-          src={
-            movie
-              ? `https://image.tmdb.org/t/p/original${movie.backdrop_path}`
-              : `https://image.tmdb.org/t/p/original${tv?.backdrop_path}`
-          }
-          alt=""
-        />
-        <div className={scss.detbg}></div>
-      </div>
+      {load ? (
+        <Loader />
+      ) : (
+        <div className={scss.detailBg}>
+          <img
+            src={
+              movie
+                ? `https://image.tmdb.org/t/p/original${movie.backdrop_path}`
+                : `https://image.tmdb.org/t/p/original${tv?.backdrop_path}`
+            }
+            alt=""
+          />
+          <div className={scss.detbg}></div>
+        </div>
+      )}
       <div className="container">
-        {movieLoad || tvLoad ? (
-          <>
-            <h1>Loading...</h1>
-          </>
+        {load ? (
+          <h1>Loading...</h1>
         ) : (
           <div className={scss.content}>
             <div className={scss.block}>
@@ -95,26 +105,12 @@ const ItemDetail = () => {
                 alt=""
               />
               <div className={scss.detailTitle}>
-                <div className={scss.modal}>
-                  <h1>{movie ? movie.title : tv?.name}</h1>
-                  <img
-                    className={scss.modalImg}
-                    src={
-                      movie
-                        ? `https://image.tmdb.org/t/p/original${movie.poster_path}`
-                        : `https://image.tmdb.org/t/p/original${tv?.poster_path}`
-                    }
-                    alt=""
-                  />{" "}
-                </div>
+                <h1>{movie ? movie.title : tv?.name}</h1>
                 <p className={scss.tangle}>
                   {movie ? movie.tagline : tv?.tagline}
                 </p>
                 <div className={scss.genres}>
-                  {movie?.genres?.map((genre) => (
-                    <span key={genre.id}>{genre.name}</span>
-                  ))}
-                  {tv?.genres?.map((genre) => (
+                  {(movie?.genres || tv?.genres || []).map((genre) => (
                     <span key={genre.id}>{genre.name}</span>
                   ))}
                 </div>
@@ -125,11 +121,7 @@ const ItemDetail = () => {
                     />
                   </div>
                   <div className={scss.PlayBtn}>
-                    <WatchTrailerButton
-                      onClick={() => {
-                        setTreilerModal(true); //
-                      }}
-                    />
+                    <WatchTrailerButton onClick={() => setTreilerModal(true)} />
                   </div>
                 </div>
                 <div className={scss.overview}>
@@ -146,15 +138,13 @@ const ItemDetail = () => {
                       <h5>Release Date:</h5>
                       <span>
                         {formatDate(
-                          movie ? movie.release_date : tv!.first_air_date
+                          movie?.release_date || tv?.first_air_date || ""
                         )}
                       </span>
                     </div>
                     <div className={scss.detBox}>
                       <h5>Runtime:</h5>
-                      <span>{`${movie ? hourMTime : hourTVTime}h ${
-                        movie ? minuteMTime : minuteTVTime
-                      }min`}</span>
+                      <span>{runtime}</span>
                     </div>
                   </div>
                   <div className={scss.hr}></div>
@@ -179,7 +169,7 @@ const ItemDetail = () => {
               <div className={scss.treilerModal}>
                 <Treiler
                   setTreilerModal={setTreilerModal}
-                  idMovie={keyForVideo?.key!}
+                  idMovie={keyForVideo || keyForTVVideo || ""}
                 />
               </div>
             )}

@@ -1,0 +1,13 @@
+.Genre {
+  display: flex;
+  align-items: start;
+  gap: 5px;
+  flex-direction: column;
+  span {
+    padding: 2px 7px;
+    background: rgb(210, 44, 89);
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 15px;
+  }
+}

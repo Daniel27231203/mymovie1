@@ -2,7 +2,8 @@
 import { useState } from "react";
 import scss from "./Popular.module.scss";
 import { useGetPopularQuery } from "@/redux/api/popular";
-import Bloks from "./homeComponents/Bloks";
+import Bloks from "../../ui/homeComponents/Bloks";
+import Skeleton from "@/components/ui/Sceleton/Sceleton";
 
 const Popular = () => {
   const [popular, setPopular] = useState("movie");
@@ -37,7 +38,19 @@ const Popular = () => {
             </div>
           </div>
           <div className={scss.bigBox}>
-            {isLoading ? <h1>load</h1> : <Bloks data={data!} value={popular}/>}
+            {/* Если данные загружаются, показываем скелетон */}
+            {isLoading ? (
+              <div className={scss.skeletonContainer}>
+                {Array(10)
+                  .fill(0)
+                  .map((_, index) => (
+                    <Skeleton key={index} />
+                  ))}
+              </div>
+            ) : (
+              // После загрузки отображаем реальный контент
+              <Bloks data={data!} />
+            )}
           </div>
         </div>
       </div>

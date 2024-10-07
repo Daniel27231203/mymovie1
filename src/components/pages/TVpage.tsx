@@ -1,7 +1,12 @@
 import React from "react";
+import Hero from "../ui/HeroPages/Hero";
 
 const TVpage = () => {
-  return <>tvPage</>;
+  return (
+    <>
+      <Hero />
+    </>
+  );
 };
 
 export default TVpage;

@@ -1,4 +1,5 @@
 "use client";
+import Loader from "@/components/ui/loader/Loader";
 import scss from "./Welcome.module.scss";
 import { useGetUpcomingQuery } from "@/redux/api/upcoming";
 import { useEffect, useState } from "react";
@@ -33,9 +34,7 @@ const Welcome = () => {
           <div className={scss.bg}></div>
         </div>
       ) : (
-        <div className={scss.Load}>
-          <div className={scss.loader}></div>
-        </div>
+        <Loader />
       )}
       <section className={scss.Welcome}>
         <div className="container">

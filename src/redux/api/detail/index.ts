@@ -47,6 +47,51 @@ const api = index.injectEndpoints({
         method: "GET",
       }),
     }),
+    getTVVideo: builder.query<
+      DETAIL.GetDetailTreilerTVResponse,
+      DETAIL.GetDetailTreiletTVRequest
+    >({
+      query: (_id) => ({
+        url: `/tv/${_id}/videos`,
+        method: "GET",
+      }),
+    }),
+    getMovieSimilar: builder.query<
+      DETAIL.GetDetailSimilarMResponse,
+      DETAIL.GetDetailSimilarMRequest
+    >({
+      query: (_id) => ({
+        url: `/movie/${_id}/similar`,
+        method: "GET",
+      }),
+    }),
+    getTVSimilar: builder.query<
+      DETAIL.GetDetailSimilarTVResponse,
+      DETAIL.GetDetailSimilarTVRequest
+    >({
+      query: (_id) => ({
+        url: `/tv/${_id}/similar`,
+        method: "GET",
+      }),
+    }),
+    getMovieRec: builder.query<
+      DETAIL.GetDetailRecMResponse,
+      DETAIL.GetDetailRecMRequest
+    >({
+      query: (_id) => ({
+        url: `/movie/${_id}/recommendations`,
+        method: "GET",
+      }),
+    }),
+    getTVRec: builder.query<
+      DETAIL.GetDetailRecTVResponse,
+      DETAIL.GetDetailRecTVRequest
+    >({
+      query: (_id) => ({
+        url: `/tv/${_id}/recommendations`,
+        method: "GET",
+      }),
+    }),
   }),
 });
 export const {
@@ -55,4 +100,9 @@ export const {
   useGetMCreditsQuery,
   useGetTVCreditsQuery,
   useGetMovieVideoQuery,
+  useGetTVVideoQuery,
+  useGetMovieSimilarQuery,
+  useGetTVSimilarQuery,
+  useGetMovieRecQuery,
+  useGetTVRecQuery,
 } = api;

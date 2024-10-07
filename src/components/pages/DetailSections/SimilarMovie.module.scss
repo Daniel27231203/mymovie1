@@ -1,0 +1,20 @@
+.SimilarMovie {
+  .content {
+    h1 {
+      font-family: "Montrezat";
+      font-size: 30px;
+      font-weight: 1000;
+      letter-spacing: 2px;
+      margin: 10px 0;
+    }
+    .skeletonContainer {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      overflow-x: scroll;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+  }
+}

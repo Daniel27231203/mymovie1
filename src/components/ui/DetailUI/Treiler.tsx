@@ -4,7 +4,7 @@ import { FaWindowClose } from "react-icons/fa";
 import { FC } from "react";
 
 interface ITreilerProps {
-  idMovie: string;
+  idMovie?: string;
   setTreilerModal: (value: boolean) => void;
 }
 
