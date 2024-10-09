@@ -6,11 +6,13 @@ const api = index.injectEndpoints({
       ALLPRODUCT.GetAllProductResponse,
       ALLPRODUCT.GetAllProductRequest
     >({
-      query: ({ value, page }) => ({
+      query: ({ value, page, genre, sort }) => ({
         url: `/discover/${value}`,
         method: "GET",
         params: {
           page: page,
+          with_genres: genre,
+          sort_by: sort,
         },
       }),
     }),

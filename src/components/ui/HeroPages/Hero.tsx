@@ -11,20 +11,27 @@ const Hero: React.FC = () => {
   const { movieq, tvq } = useParams();
   const value = movieq || tvq;
 
-  // State для хранения данных и текущей страницы
   const [page, setPage] = useState<number>(1);
   const [products, setProducts] = useState<any[]>([]);
+  5;
 
-  // Получаем данные через запрос с параметром страницы
+  const [genres, setGenres] = useState<any>("");
+
+  const [sort, setSort] = useState<string>("");
+
   const { data, isLoading, isFetching } = useGetAllProductsQuery({
     value: String(value),
     page: page,
+    genre: String(genres),
+    sort: sort,
   });
 
   const { data: genre } = useGetGenreQuery(String(value));
-  console.log("🚀 ~ genre:", genre);
 
-  // Следим за изменениями в данных и обновляем список продуктов
+  useEffect(() => {
+    setProducts([]);
+    setPage(1); // сбрасываем страницу при смене жанра
+  }, [genres, sort]);
   useEffect(() => {
     if (data) {
       setProducts((prev) => [...prev, ...data.results]); // добавляем новые данные в список
@@ -62,20 +69,43 @@ const Hero: React.FC = () => {
               <div className={scss.heroTitle}>
                 <h2>Explore Movies....</h2>
                 <div className={scss.filterBlock}>
-                  <select name="" id="">
+                  <select
+                    onChange={(e) => {
+                      e.target.value ? setGenres(e.target.value) : "";
+                    }}
+                    name=""
+                    id=""
+                  >
                     {genre?.genres.map((el) => (
                       <>
-                        <option value={el.id}>{el.name}</option>
+                        <option key={el.id} value={el.id}>
+                          {el.name}
+                        </option>
                       </>
                     ))}
                   </select>
-                  <select name="" id="">
-                    <option value="">Popularity</option>
-                    <option value=""></option>
-                    <option value=""></option>
-                    <option value=""></option>
-                    <option value=""></option>
-                    <option value=""></option>
+                  <select
+                    onChange={(e) => {
+                      e.target.value ? setSort(e.target.value) : "";
+                    }}
+                    name=""
+                    id=""
+                  >
+                    <option value="popularity.desc">
+                      Popularity Descending
+                    </option>
+                    <option value="popularity.asc">Popularity Ascending</option>
+                    <option value="vote_average.desc">
+                      Raiting Descending
+                    </option>
+                    <option value="vote_average.asc">Raiting Ascending</option>
+                    <option value="primary_release_date.desc">
+                      Release Descending
+                    </option>
+                    <option value="primary_release_date.asc">
+                      Release Ascending
+                    </option>
+                    <option value="original_title.asc">A-Z</option>
                   </select>
                 </div>
               </div>

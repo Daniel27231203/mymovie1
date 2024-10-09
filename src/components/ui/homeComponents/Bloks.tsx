@@ -44,10 +44,18 @@ const Bloks: FC<IData> = ({ data, value, type }) => {
               <div className={scss.circleRai}>
                 <CircularRating rating={item.vote_average} />
               </div>
-              <img
-                src={`https://image.tmdb.org/t/p/original${item.poster_path}`}
-                alt="movie"
-              />
+              {item.poster_path ? (
+                <img
+                  src={`https://image.tmdb.org/t/p/original${item.poster_path}`}
+                  alt="ma"
+                />
+              ) : (
+                <img
+                  className={scss.imageNoPoster}
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/No_poster.svg/640px-No_poster.svg.png"
+                  alt="ma"
+                />
+              )}
               <h3>{item.title || item.name}</h3>
               <p>{formatDate(item.release_date || item.first_air_date)}</p>
             </div>

@@ -3,5 +3,7 @@ namespace ALLPRODUCT {
   type GetAllProductRequest = {
     page: number;
     value: string;
+    genre: string;
+    sort: string;
   };
 }
