@@ -3,11 +3,14 @@ import Loader from "@/components/ui/loader/Loader";
 import scss from "./Welcome.module.scss";
 import { useGetUpcomingQuery } from "@/redux/api/upcoming";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 const Welcome = () => {
+  const router = useRouter();
   const { data } = useGetUpcomingQuery();
   const [backRandomImage, setBackRandomImage] = useState<string>("");
   console.log("🚀 ~ Welcome ~ backRandomImage:", backRandomImage);
+  const [inputValue, setInputValue] = useState<string>("");
 
   const backgroundRandomImage = () => {
     if (data?.results) {
@@ -41,12 +44,21 @@ const Welcome = () => {
           <div className={scss.content}>
             {backRandomImage ? (
               <>
-                {/* fix */}
                 <h1></h1>
                 <p>Открой для себя лучшие фильмы и шоу — всё в одном месте!</p>
                 <div className={scss.searchBlock}>
-                  <input type="text" placeholder="search movie or TV show" />
-                  <button>search</button>
+                  <input
+                    onChange={(e) => setInputValue(e.target.value)}
+                    type="text"
+                    placeholder="search movie or TV show"
+                  />
+                  <button
+                    onClick={() => {
+                      router.push(`/search/${inputValue}`);
+                    }}
+                  >
+                    search
+                  </button>
                 </div>
               </>
             ) : null}
